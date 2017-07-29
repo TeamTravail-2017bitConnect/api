@@ -25,6 +25,7 @@ class TruckController(object):
         
         truck["progressRate"] = float(len(truck[bagKey][doneKey]))/(len(truck[bagKey][doneKey]) + len(truck[bagKey][deliverKey]))
         resp.body = json.dumps(truck, ensure_ascii=False)
+        resp.append_header("Access-Control-Allow-Origin","*")
     
     def createBaggage(self, truck):
  
@@ -60,3 +61,4 @@ class TruckController(object):
         self.db.location_logs.insert(doc)
 
         resp.status = falcon.HTTP_201
+        resp.append_header("Access-Control-Allow-Origin","*")

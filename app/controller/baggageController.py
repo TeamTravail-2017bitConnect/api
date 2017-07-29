@@ -10,7 +10,8 @@ class BaggageController(object):
         baggages = self.db.baggages.find()
         bs = self.toData(baggages)
         resp.body = json.dumps(bs, ensure_ascii=False)
-  
+        resp.append_header("Access-Control-Allow-Origin","*")
+
     @staticmethod
     def toData(baggages):
          return [utils.removeId(data) for data in baggages]
