@@ -8,6 +8,7 @@ app = falcon.API()
 app.add_route("/", c.HelloController())
 app.add_route("/baggages", c.BaggageController(db = db))
 app.add_route("/trucks/{truck_id}", c.TruckController(db = db))
+app.add_route("/users/{user_id}", c.UserController(db = db))
 
 
 if __name__ == "__main__":
