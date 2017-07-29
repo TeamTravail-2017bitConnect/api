@@ -1,4 +1,5 @@
 import json
+import utils
 
 class UserController(object):
     
@@ -6,8 +7,8 @@ class UserController(object):
         self.db = db
 
     def on_get(self, req, resp, user_id):
-        users = self.db.users.find_One({"id": float(user_id)})
-        truck = [data for data in trucks][0]
-        resp.body = json.dumps(bs, ensure_ascii=False)
+        user = self.db.users.find_one({"id": float(user_id)})
+        user = utils.removeId(user)
+        resp.body = json.dumps(user, ensure_ascii=False)
         resp.append_header("Access-Control-Allow-Origin","*")
 

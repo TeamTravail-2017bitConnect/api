@@ -18,8 +18,7 @@ class TruckController(object):
         self.db = db
 
     def on_get(self, req, resp, truck_id):
-        trucks = self.db.trucks.find({"id": float(truck_id)})
-        truck = [data for data in trucks][0]
+        truck = self.db.trucks.find_one({"id": float(truck_id)})
         truck = self.createBaggage(truck)
         del truck["_id"]
         del truck["baggageIds"]
