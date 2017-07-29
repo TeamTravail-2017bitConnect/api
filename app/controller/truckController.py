@@ -5,6 +5,7 @@ import utils
 import baggageController as bc
 import falcon
 import datetime
+import http_request as hr
 
 bagKey = "baggages"
 doneKey = "done"
@@ -58,6 +59,7 @@ class TruckController(object):
         doc["truckId"] = truck_id
         todaydetail = datetime.datetime.today()
         doc["update_at"] = todaydetail.strftime("%Y-%m-%d %H:%M:%S")
+        doc["address"] = hr.address(doc["x"],doc["y"])
         self.db.location_logs.insert(doc)
 
         resp.status = falcon.HTTP_201

@@ -14,4 +14,4 @@ class BaggageController(object):
 
     @staticmethod
     def toData(baggages):
-         return [utils.removeId(data) for data in baggages]
+        return [utils.removeId(data) for data in baggages]
