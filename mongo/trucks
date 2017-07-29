@@ -10,5 +10,11 @@ db.trucks.insert([
         "userId":"t4tdgwerewrt",
         "name":"tanaka",
         "baggageIds":[1,2,3,5]
+    },
+    {
+        "id":3,
+        "userId":"t4tdgwsdfrewrt",
+        "name":"sato",
+        "baggageIds":[8,9,10,11,12,13,14,15]
     }
 ])

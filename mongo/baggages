@@ -58,3 +58,40 @@ db.baggages.insert(
         }
     ]
 )
+
+db.baggages.insert(
+    [
+        {            "baggageId": 8,
+            "status":"delivering",
+            "customerName":"落合太郎",
+"y":"35.660591","x":"139.669441","address":"〒155-0031 東京都世田谷区北沢１丁目３７"},
+        {            "baggageId": 9,
+            "status":"delivering",
+            "customerName":"落合太郎",
+"y":"35.6585453","x":"139.6672647","address":"〒155-0032 東京都世田谷区代沢２丁目２５"},
+        {            "baggageId": 10,
+            "status":"delivering",
+            "customerName":"落合太郎",
+"y":"35.6610176","x":"139.6716925","address":"〒155-0032 東京都世田谷区代沢２丁目４６−７"},
+        {            "baggageId": 11,
+            "status":"delivering",
+            "customerName":"落合太郎",
+"y":"35.661873","x":"139.6697843","address":"〒155-0031 東京都世田谷区北沢１丁目４２−８"},
+        {            "baggageId": 12,
+            "status":"delivering",
+            "customerName":"落合太郎",
+"y":"35.6626283","x":"139.666804","address":"〒155-0031 東京都世田谷区北沢２丁目３１−３"},
+        {            "baggageId": 13,
+            "status":"delivering",
+            "customerName":"落合太郎",
+"y":"35.6619823","x":"139.6635903","address":"〒155-0033 東京都世田谷区代田６丁目１"},
+        {            "baggageId": 14,
+            "status":"delivering",
+            "customerName":"落合太郎",
+"y":"35.6612659","x":"139.662633","address":"〒155-0033 東京都世田谷区代田５丁目３４"},
+        {            "baggageId": 15,
+            "status":"delivering",
+            "customerName":"落合太郎",
+"y":"35.6610003","x":"139.6635233","address":"〒155-0031 東京都世田谷区北沢２丁目２２−１１"},
+    ]
+)
