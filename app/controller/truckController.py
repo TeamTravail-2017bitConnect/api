@@ -31,7 +31,8 @@ class TruckController(object):
     def createProgress(self, truck):
         done = len(truck[bagKey][doneKey])
         deliver = len(truck[bagKey][deliverKey])
-        rate = float(done)/(done + deliver)
+        redeliver = len(truck[bagKey][redeliverKey])
+        rate = float(done)/(done + deliver + redeliver)
         return float('%03.3f' % rate)
     
     def createBaggage(self, truck):
