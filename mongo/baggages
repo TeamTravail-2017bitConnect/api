@@ -1,0 +1,60 @@
+db.baggages.insert(
+    [
+        {
+            "baggageId": 1,
+            "status":"done",
+            "customerName":"落合太郎",
+            "address": "〒158-0091 東京都世田谷区中町４丁目５−１３",
+            "x":"35.619577",
+            "y":"139.644173 "
+        },
+        {
+            "baggageId": 2,
+            "status":"delivering",
+            "customerName":"落合太郎",
+            "address": "〒158-0091 東京都世田谷区中町５丁目１８−５",
+            "x":"35.619514",
+            "y":"139.642126 "
+        },
+        {
+            "baggageId": 3,
+            "status":"done",
+            "customerName":"落合太郎",
+            "address": "〒158-0091 東京都世田谷区中町５丁目２０−８",
+            "x":"35.619981",
+            "y":"139.641598"
+        },
+        {
+            "baggageId": 4,
+            "status":"delivering",
+            "customerName":"落合太郎",
+            "address": "〒158-0091 東京都世田谷区中町５丁目１１−１９    ",
+            "x":"35.622641",
+            "y":"139.642270"
+        },
+        {
+            "baggageId": 5,
+            "status":"done",
+            "customerName":"落合太郎",
+            "address": "〒158-0097 東京都世田谷区用賀１丁目１０−２８",
+            "x":"35.623576",
+            "y":"139.639175"
+        },
+        {
+            "baggageId": 6,
+            "status":"delivering",
+            "customerName":"落合太郎",
+            "address": "〒101-0021 東京都千代田区外神田４丁目１４−１",
+            "x":"35.620622",
+            "y":"139.645988"
+        },
+        {
+            "baggageId": 7,
+            "status":"delivering",
+            "customerName":"落合太郎",
+            "address": "〒101-0021 東京都千代田区外神田４丁目１４−１",
+            "x":"35.620515",
+            "y":"139.646976"
+        }
+    ]
+)
