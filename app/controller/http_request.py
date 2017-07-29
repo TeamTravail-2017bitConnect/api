@@ -12,5 +12,19 @@ def address(x, y):
 def tra(st):
     return st.encode("utf-8")
 
+def toJson(req):
+    body = req.stream.read()
+    try:
+        doc = json.loads(body)
+
+    except (ValueError, UnicodeDecodeError):
+        raise falcon.HTTPError(falcon.HTTP_753,
+                                'Malformed JSON',
+                                'Could not decode the request body. The '
+                                'JSON was incorrect or not encoded as '
+                                'UTF-8.')
+    return doc
+
+
 if __name__=='__main__':
     print address('135.005213','35.001111')

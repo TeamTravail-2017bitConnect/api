@@ -53,16 +53,7 @@ class TruckController(object):
         return truck
 
     def on_put(self, req, resp, truck_id):
-        body = req.stream.read()
-        try:
-            doc = json.loads(body)
-
-        except (ValueError, UnicodeDecodeError):
-            raise falcon.HTTPError(falcon.HTTP_753,
-                                   'Malformed JSON',
-                                   'Could not decode the request body. The '
-                                   'JSON was incorrect or not encoded as '
-                                   'UTF-8.')
+        doc = hr.toJson(req)
         doc["truckId"] = truck_id
         todaydetail = datetime.datetime.today()
         doc["update_at"] = todaydetail.strftime("%Y-%m-%d %H:%M:%S")

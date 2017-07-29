@@ -51,7 +51,7 @@ db.location_logs.insert(
         "truckId":2,
         "update_at": "2017-07-29 12:11:01",
         "x": "35.619577",
-        "y": "139.644173 "
+        "y": "139.644173"
         },
         {
         "truckId":2,
