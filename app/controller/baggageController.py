@@ -9,7 +9,7 @@ class BaggageController(object):
     def on_get(self, req, resp):
         baggages = self.db.baggages.find()
         bs = self.toData(baggages)
-        resp.body = json.dumps(bs)
+        resp.body = json.dumps(bs, ensure_ascii=False)
   
     @staticmethod
     def toData(baggages):
