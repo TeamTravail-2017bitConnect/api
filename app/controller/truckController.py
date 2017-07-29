@@ -24,9 +24,15 @@ class TruckController(object):
         del truck["baggageIds"]
         truck = self.createHistory(truck)
         
-        truck["progressRate"] = float(len(truck[bagKey][doneKey]))/(len(truck[bagKey][doneKey]) + len(truck[bagKey][deliverKey]))
+        truck["progressRate"] = self.createProgress(truck)
         resp.body = json.dumps(truck, ensure_ascii=False)
         resp.append_header("Access-Control-Allow-Origin","*")
+
+    def createProgress(self, truck):
+        done = len(truck[bagKey][doneKey])
+        deliver = len(truck[bagKey][deliverKey])
+        rate = float(done)/(done + deliver)
+        return float('%03.3f' % rate)
     
     def createBaggage(self, truck):
  
