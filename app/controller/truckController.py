@@ -10,7 +10,7 @@ import http_request as hr
 bagKey = "baggages"
 doneKey = "done"
 deliverKey = "delivering"
-redeliverKey = "re-delivery"
+redeliverKey = "redelivery"
 
 class TruckController(object):
     
