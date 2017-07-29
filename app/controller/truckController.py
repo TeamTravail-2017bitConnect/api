@@ -16,7 +16,12 @@ class TruckController(object):
         baggages = self.db.baggages.find({"$or": baggageIds})
         bags = bc.BaggageController.toData(baggages)
         del truck["_id"]
-        truck["baggages"] = {}
-        truck["baggages"]["done"] = [b for b in bags if b["status"]=="done"]
-        truck["baggages"]["delivering"] = [b for b in bags if b["status"]=="delivering"]
+        
+        bagKey = "baggages"
+        doneKey = "done"
+        deliverKey = "delivering"
+        truck[bagKey] = {}
+        truck[bagKey][doneKey] = [b for b in bags if b["status"]==doneKey]
+        truck[bagKey][deliverKey] = [b for b in bags if b["status"]==deliverKey]
+        truck["progressRate"] = float(len(truck[bagKey][doneKey]))/(len(truck[bagKey][doneKey]) + len(truck[bagKey][deliverKey]))
         resp.body = json.dumps(truck, ensure_ascii=False)
