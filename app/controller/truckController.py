@@ -48,7 +48,7 @@ class TruckController(object):
 
     def createHistory(self, truck):
         id = truck["id"]
-        history = self.db.location_logs.find({"truckId":float(id)}).limit(20)
+        history = self.db.location_logs.find({"truckId":float(id)}).sort("update_at", pymongo.DESCENDING).limit(20)
         truck["locationHistory"] = [utils.removeId(x) for x in history]
         return truck
 
