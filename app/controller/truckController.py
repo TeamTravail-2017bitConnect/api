@@ -16,5 +16,7 @@ class TruckController(object):
         baggages = self.db.baggages.find({"$or": baggageIds})
         bags = bc.BaggageController.toData(baggages)
         del truck["_id"]
-        truck["baggages"] = bags
+        truck["baggages"] = {}
+        truck["baggages"]["done"] = [b for b in bags if b["status"]=="done"]
+        truck["baggages"]["delivering"] = [b for b in bags if b["status"]=="delivering"]
         resp.body = json.dumps(truck, ensure_ascii=False)
