@@ -1,16 +1,12 @@
 import falcon
-import json
+import controller as c
+from pymongo import MongoClient
+import conf
 
-class HelloResource(object):
-
-    def on_get(self, req, resp):
-        msg = {
-            "message": "Welcome to the Falcon"
-        }
-        resp.body = json.dumps(msg)
-
+db = MongoClient(conf.MONGO_HOST, conf.MONGO_PORT)[conf.MONGO_DB]
 app = falcon.API()
-app.add_route("/", HelloResource())
+app.add_route("/", c.HelloController())
+app.add_route("/trucks/{truck_id}", c.TruckController(db))
 
 
 if __name__ == "__main__":
