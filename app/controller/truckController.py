@@ -3,6 +3,8 @@ import json
 import pymongo
 import utils
 import baggageController as bc
+import falcon
+import datetime
 
 bagKey = "baggages"
 doneKey = "done"
@@ -40,3 +42,21 @@ class TruckController(object):
         history = self.db.location_logs.find({"truckId":float(id)}).limit(20)
         truck["locationHistory"] = [utils.removeId(x) for x in history]
         return truck
+
+    def on_put(self, req, resp, truck_id):
+        body = req.stream.read()
+        try:
+            doc = json.loads(body)
+
+        except (ValueError, UnicodeDecodeError):
+            raise falcon.HTTPError(falcon.HTTP_753,
+                                   'Malformed JSON',
+                                   'Could not decode the request body. The '
+                                   'JSON was incorrect or not encoded as '
+                                   'UTF-8.')
+        doc["truckId"] = truck_id
+        todaydetail = datetime.datetime.today()
+        doc["update_at"] = todaydetail.strftime("%Y-%m-%d %H:%M:%S")
+        self.db.location_logs.insert(doc)
+
+        resp.status = falcon.HTTP_201
