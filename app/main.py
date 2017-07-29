@@ -6,8 +6,8 @@ import conf
 db = MongoClient(conf.MONGO_HOST, conf.MONGO_PORT)[conf.MONGO_DB]
 app = falcon.API()
 app.add_route("/", c.HelloController())
-app.add_route("/trucks/{truck_id}", c.TruckController(db))
-app.add_route("/baggages", c.TruckController(db))
+app.add_route("/baggages", c.BaggageController(db = db))
+app.add_route("/trucks/{truck_id}", c.TruckController(db = db))
 
 
 if __name__ == "__main__":

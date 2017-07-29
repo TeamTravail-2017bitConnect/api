@@ -1,5 +1,10 @@
+# -*- coding: utf-8 -*-
 import json
 import pymongo
+import utils
+import baggageController as bc
+from logger import set_up_logging
+logger = set_up_logging()
 
 class TruckController(object):
     
@@ -9,5 +14,10 @@ class TruckController(object):
     def on_get(self, req, resp, truck_id):
         trucks = self.db.trucks.find({"id": float(truck_id)})
         truck = [data for data in trucks][0]
+        baggageIds = [{"baggageId":data} for data in truck['baggageIds']]
+        baggages = self.db.baggages.find({"$or": baggageIds})
+        bags = bc.BaggageController.toData(baggages)
+        print bags
         del truck["_id"]
+        truck["baggages"] = bags
         resp.body = json.dumps(truck)

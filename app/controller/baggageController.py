@@ -1,4 +1,5 @@
 import json
+import utils
 
 class BaggageController(object):
     
@@ -7,6 +8,9 @@ class BaggageController(object):
 
     def on_get(self, req, resp):
         baggages = self.db.baggages.find()
-        baggage = [data for data in baggages][0]
-        del baggage["_id"]
-        resp.body = json.dumps(baggage)
+        bs = self.toData(baggages)
+        resp.body = json.dumps(bs)
+  
+    @staticmethod
+    def toData(baggages):
+         return [utils.removeId(data) for data in baggages]
