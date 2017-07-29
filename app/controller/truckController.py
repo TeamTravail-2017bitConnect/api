@@ -10,6 +10,7 @@ import http_request as hr
 bagKey = "baggages"
 doneKey = "done"
 deliverKey = "delivering"
+redeliverKey = "re-delivery"
 
 class TruckController(object):
     
@@ -43,6 +44,7 @@ class TruckController(object):
         truck[bagKey] = {}
         truck[bagKey][doneKey] = [b for b in bags if b["status"]==doneKey]
         truck[bagKey][deliverKey] = [b for b in bags if b["status"]==deliverKey]
+        truck[bagKey][redeliverKey] = [b for b in bags if b["status"]==redeliverKey]
         return truck
 
     def createHistory(self, truck):
